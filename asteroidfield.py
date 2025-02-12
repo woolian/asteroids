@@ -1,4 +1,4 @@
-import pygame
+import pygame # type: ignore
 import random
 from asteroid import Asteroid
 from constants import *
@@ -37,7 +37,6 @@ class AsteroidField(pygame.sprite.Sprite):
         asteroid.velocity = velocity
 
     def update(self, dt):
-        print("AsteroidField update called!")
         self.spawn_timer += dt
         if self.spawn_timer > ASTEROID_SPAWN_RATE:
             self.spawn_timer = 0

@@ -1,4 +1,5 @@
 import pygame # type: ignore
+import sys
 from constants import *
 from player import *
 from asteroid import Asteroid
@@ -28,6 +29,9 @@ def main():
                 return
         screen.fill((0,0,0)) # black - RGB value
         updatable.update(dt)
+        for asters in asteroids:
+            if asters.check_collision(player) == True:
+                sys.exit("Game over!")
         for each in drawable:
             each.draw(screen)
         pygame.display.flip()
