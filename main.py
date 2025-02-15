@@ -33,8 +33,12 @@ def main():
                 return
         screen.fill((0,0,0)) # black - RGB value
         updatable.update(dt)
-        for asters in asteroids:
-            if asters.check_collision(player) == True:
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.check_collision(shot) == True:
+                    shot.kill()
+                    asteroid.split()
+            if asteroid.check_collision(player) == True:
                 sys.exit("Game over!")
         for each in drawable:
             each.draw(screen)
